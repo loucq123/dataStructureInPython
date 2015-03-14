@@ -33,6 +33,7 @@ class LinkedList():
         else:
             insertItem.next = self.front
             self.front = insertItem
+    
     def find(self, item):
         first = self.front
         while first != None:
@@ -85,6 +86,7 @@ def testLinkedListInsert_afterCreation():
     testList.insert_after(2)
     assert testList.first_node().element == 1 and testList.last_node().element == 2
 
+
 def testLinkedListInsert_beforeCreation():
     testList = LinkedList()
     testList.insert_before(1)
@@ -98,6 +100,7 @@ def testLinkedListFindCreation():
     testList.insert_after(1)
     testList.insert_after(2)
     assert testList.find(2) == testList.rear and testList.find(3) == None
+
 
 def testLinkedListCountCreation():
     testList = LinkedList()
