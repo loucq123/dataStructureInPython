@@ -4,7 +4,7 @@ class Node():
         self.next = next
 
     def __repr__(self):
-        return self.element
+        return repr(self.element)
 
 
 class LinkedList():
@@ -48,13 +48,13 @@ class LinkedList():
         if self.is_empty():
             print("The linked list is empty --- firstNode")
         else:
-            print(self.front.__repr__())
+            return self.front
 
     def last_node(self):
         if self.is_empty():
             print("The linked list is empty --- lastNode")
         else:
-            print(self.rear.__repr__())
+            return self.rear
 
 
 def testNodeCreation():
@@ -62,14 +62,48 @@ def testNodeCreation():
     assert n.element == 10
 
 
-def testLinkedListCreation():
+def testLinkedListInsertCreation():
     testList = LinkedList()
     testList.insert(1)
-    assert testList.front.element == 1 and testList.rear.element == 1
+    assert testList.first_node().element == 1 and testList.last_node().element == 1
     testList.insert(2)
-    assert testList.front.element == 1 and testList.rear.element == 2
+    assert testList.first_node().element == 1 and testList.last_node().element == 2
+
+
+def testLinkedListCountCreation():
+    testList = LinkedList()
+    assert testList.count() == 0
+    testList.insert(111)
+    assert testList.count() == 1
+
+
+def testLinkedListDeleteCreation():
+    testList = LinkedList()
+    testList.insert(1)
+    testList.insert(2)
     testList.delete()
-    assert testList.front.element == 1 and testList.rear.element == 1
+    assert testList.first_node().element == 1 and testList.last_node().element == 1
+
+
+def testLinkedListFirst_nodeCreation():
+    testList = LinkedList()
+    testList.insert(1)
+    assert testList.first_node() == testList.front
+
+
+def testLinkedListLast_nodeCreation():
+    testList = LinkedList()
+    testList.insert(1)
+    testList.insert(2)
+    assert testList.last_node() == testList.rear
+
+
+def testLinkedListCreation():
+    testLinkedListInsertCreation()
+    testLinkedListCountCreation()
+    testLinkedListDeleteCreation()
+    testLinkedListFirst_nodeCreation()
+    testLinkedListLast_nodeCreation()
 
 
 def test():
@@ -79,6 +113,7 @@ def test():
 
 if __name__ == '__main__':
     test()
+
 
 
 
