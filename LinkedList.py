@@ -4,7 +4,7 @@ class Node():
         self.next = next
 
     def __repr__(self):
-        return repr(self.element)
+        return self.element
 
 
 class LinkedList():
@@ -48,13 +48,13 @@ class LinkedList():
         if self.is_empty():
             print("The linked list is empty --- firstNode")
         else:
-            print(self.__repr__())
+            print(self.front.__repr__())
 
     def last_node(self):
         if self.is_empty():
             print("The linked list is empty --- lastNode")
         else:
-            print(self.__repr__())
+            print(self.rear.__repr__())
 
 
 def testNodeCreation():
