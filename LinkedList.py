@@ -44,13 +44,13 @@ class LinkedList():
             times += 1
         return times
 
-    def firstNode(self):
+    def first_node(self):
         if self.is_empty():
             print("The linked list is empty --- firstNode")
         else:
             print(self.__repr__())
 
-    def lastNode(self):
+    def last_node(self):
         if self.is_empty():
             print("The linked list is empty --- lastNode")
         else:
