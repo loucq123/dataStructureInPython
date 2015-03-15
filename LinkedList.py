@@ -114,7 +114,7 @@ class LinkedList():
         else:
             return self.tail
 
-    def append(self, item):
+    def append(self, item):                       # O(1)
         insert_item = Node(item)
         if self.is_empty():
             self.head.next = insert_item
@@ -127,7 +127,7 @@ class LinkedList():
             self.tail = insert_item
             self.count += 1
             
-    def reverse(self):
+    def reverse(self):                            # O(n\2)
         front = self.head.next
         rear = self.tail
         if front is None:
