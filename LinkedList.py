@@ -11,13 +11,25 @@ class Node():
 
 class LinkedList():
 
-    def __init__(self, tail=None, count=0):
+    def __init__(self, tail=None, count=0, index=0):
         self.head = Node()
         self.tail = tail
         self.count = count
 
     def is_empty(self):                              # O(1)
         return self.head.next is None
+
+    def object_at_index(self, index):                 # O(n)
+        if index >= self.count:
+            print("The index is wrong --- object_ar_index")
+            return False
+        else:
+            node = self.head.next
+            temp_count = 0
+            while temp_count is not index:
+                node = node.next
+                temp_count += 1
+            return node.element
 
     def insert_after(self, item, node):              # O(n)
         temp_node = self.head
@@ -114,7 +126,7 @@ class LinkedList():
         else:
             return self.tail
 
-    def append(self, item):                       # O(1)
+    def append(self, item):                       # O(n)
         insert_item = Node(item)
         if self.is_empty():
             self.head.next = insert_item
@@ -126,8 +138,8 @@ class LinkedList():
             insert_item.prev = self.tail
             self.tail = insert_item
             self.count += 1
-            
-    def reverse(self):                            # O(n\2)
+
+    def reverse(self):                             # O(n)
         front = self.head.next
         rear = self.tail
         if front is None:
@@ -200,6 +212,15 @@ def testLinkedListReverse():
             testList.first_node().next.element == 1 and testList.last_node().prev.element == 2
 
 
+def testLinkedListObject_at_index():
+    testList = LinkedList()
+    assert testList.object_at_index(0) == False
+    testList.insert_after(1, Node())
+    testList.insert_after(2, testList.tail)
+    assert testList.object_at_index(0) == 1 and testList.object_at_index(1) == 2 and \
+            testList.object_at_index(2) == False
+
+
 def testLinkedListLength():
     testList = LinkedList()
     testList.insert_before(1, Node())
@@ -240,6 +261,7 @@ def testLinkedListCreation():
     testLinkedListLast_node()
     testLinkedListAppend()
     testLinkedListReverse()
+    testLinkedListObject_at_index()
 
 
 def test():
